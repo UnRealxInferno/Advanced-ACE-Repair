@@ -30,8 +30,8 @@ private _text = localize LSTRING(AdvMajorRepair);
 private _text2 = format ["%1 %2%%",_text,_repair];
 private _condition = {[_this select 1, _this select 0, "", "AdvMajorRepair"] call ace_repair_fnc_canRepair};
 private _statement = {[_this select 1, _this select 0, "", "AdvMajorRepair"] call ace_repair_fnc_repair};
-private _action = ["AdvMajorRepair", _text2, _icon, _statement, _condition, {}, [], "", 4] call ace_interact_menu_createAction;
-[_type, 0, ["ACE_MainActions"], _action] call ace_interact_menu_addActionToClass;
+private _action = ["AdvMajorRepair", _text2, _icon, _statement, _condition, {}, [], "", 4] call ace_interact_menu_fnc_createAction;
+[_type, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
 
 _initializedClasses pushBack _type;
 missionNamespace setVariable [QACEVAR(repair,initializedClasses),_initializedClasses];

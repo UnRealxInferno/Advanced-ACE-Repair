@@ -23,7 +23,7 @@ if (_finalhp < 0) then {
 };
 
 player removeItem "advrepair_SpareParts";
-_target setHitPointDamage [_partsel,_finalhp];
+[QACEVAR(repair,setWheelHitPointDamage), [_target, _partsel, _finalhp], _target] call CBA_fnc_targetEvent;
 _newdmg = format ["%1%% HP",round((100 - 100 * _finalhp) * (10 ^ 2)) / (10 ^ 2)];
 _lnb lnbSetText [[_rowsel,0],_newdmg];
 

@@ -45,6 +45,7 @@ private _icon = ["a3\ui_f\data\igui\cfg\actions\repair_ca.paa", "#FFFFFF"];
 
 private _hitpointsMajor = [];
 private _hitpointsMajorPart = [];
+private _processedSelections = [];
 
 private _vehCfg = configOf _vehicle;
 
@@ -159,7 +160,7 @@ private _turretPaths = ((fullCrew [_vehicle, "gunner", true]) + (fullCrew [_vehi
         private _name = format ["Repair_%1_%2", _forEachIndex, _selection];
 
         // Find localized string and track those added for numerization
-        ([_hitpoint, "%1", _hitpoint, [_hitPointsAddedNames, _hitPointsAddedStrings, _hitPointsAddedAmount]] call FUNC(getHitPointString)) params ["_text", "_trackArray"];
+        ([_hitpoint, "%1", _hitpoint, [_hitPointsAddedNames, _hitPointsAddedStrings, _hitPointsAddedAmount]] call ace_repair_fnc_getHitPointString) params ["_text", "_trackArray"];
         _hitPointsAddedNames = _trackArray select 0;
         _hitPointsAddedStrings = _trackArray select 1;
         _hitPointsAddedAmount = _trackArray select 2;
@@ -178,7 +179,7 @@ private _turretPaths = ((fullCrew [_vehicle, "gunner", true]) + (fullCrew [_vehi
                 private _text = localize LSTRING(RemoveFueltanksmall);
                 private _condition = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveFueltanksmall"] call ace_repair_fnc_canRepair};
                 private _statement = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveFueltanksmall"] call ace_repair_fnc_repair};
-                private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, FUNC(modifySelectionInteraction)] call ace_interact_menu_fnc_createAction;
+                private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, ace_repair_fnc_modifySelectionInteraction] call ace_interact_menu_fnc_createAction;
                 [_type, 0, [], _action] call ace_interact_menu_fnc_addActionToClass;
 
                 // An action to replace the wheel is required
@@ -205,7 +206,7 @@ private _turretPaths = ((fullCrew [_vehicle, "gunner", true]) + (fullCrew [_vehi
                 private _text = localize LSTRING(RemoveFueltanklarge);
                 private _condition = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveFueltanklarge"] call ace_repair_fnc_canRepair};
                 private _statement = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveFueltanklarge"] call ace_repair_fnc_repair};
-                private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, FUNC(modifySelectionInteraction)] call ace_interact_menu_fnc_createAction;
+                private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, ace_repair_fnc_modifySelectionInteraction] call ace_interact_menu_fnc_createAction;
                 [_type, 0, [], _action] call ace_interact_menu_fnc_addActionToClass;
 
                 // An action to replace the wheel is required
@@ -234,7 +235,7 @@ private _turretPaths = ((fullCrew [_vehicle, "gunner", true]) + (fullCrew [_vehi
             private _text = localize LSTRING(RemoveGunFCS);
             private _condition = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveGunFCS"] call ace_repair_fnc_canRepair};
             private _statement = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveGunFCS"] call ace_repair_fnc_repair};
-            private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, FUNC(modifySelectionInteraction)] call ace_interact_menu_fnc_createAction;
+            private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, ace_repair_fnc_modifySelectionInteraction] call ace_interact_menu_fnc_createAction;
             [_type, 0, [], _action] call ace_interact_menu_fnc_addActionToClass;
 
             // An action to replace the wheel is required
@@ -263,7 +264,7 @@ private _turretPaths = ((fullCrew [_vehicle, "gunner", true]) + (fullCrew [_vehi
             private _text = localize LSTRING(RemoveTurretdrive);
             private _condition = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveTurretdrive"] call ace_repair_fnc_canRepair};
             private _statement = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveTurretdrive"] call ace_repair_fnc_repair};
-            private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, FUNC(modifySelectionInteraction)] call ace_interact_menu_fnc_createAction;
+            private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, ace_repair_fnc_modifySelectionInteraction] call ace_interact_menu_fnc_createAction;
             [_type, 0, [], _action] call ace_interact_menu_fnc_addActionToClass;
 
             // An action to replace the wheel is required
@@ -292,7 +293,7 @@ private _turretPaths = ((fullCrew [_vehicle, "gunner", true]) + (fullCrew [_vehi
                 _text = localize LSTRING(RemoveRotorAssembly);
                 private _condition = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveRotorAssembly"] call ace_repair_fnc_canRepair};
                 private _statement = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveRotorAssembly"] call ace_repair_fnc_repair};
-                private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 8, nil, FUNC(modifySelectionInteraction)] call ace_interact_menu_fnc_createAction;
+                private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 8, nil, ace_repair_fnc_modifySelectionInteraction] call ace_interact_menu_fnc_createAction;
                 [_type, 0, [], _action] call ace_interact_menu_fnc_addActionToClass;
 
                 // An action to replace the wheel is required
@@ -321,7 +322,7 @@ private _turretPaths = ((fullCrew [_vehicle, "gunner", true]) + (fullCrew [_vehi
                 _text = localize LSTRING(RemoveAvionics);
                 private _condition = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveAvionics"] call ace_repair_fnc_canRepair};
                 private _statement = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveAvionics"] call ace_repair_fnc_repair};
-                private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, FUNC(modifySelectionInteraction)] call ace_interact_menu_fnc_createAction;
+                private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, ace_repair_fnc_modifySelectionInteraction] call ace_interact_menu_fnc_createAction;
                 [_type, 0, [], _action] call ace_interact_menu_fnc_addActionToClass;
 
                 // An action to replace the wheel is required
@@ -353,7 +354,7 @@ private _turretPaths = ((fullCrew [_vehicle, "gunner", true]) + (fullCrew [_vehi
                         private _text = localize LSTRING(RemoveEnginepistonmedium);
                         private _condition = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveEnginepistonmedium"] call ace_repair_fnc_canRepair};
                         private _statement = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveEnginepistonmedium"] call ace_repair_fnc_repair};
-                        private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, FUNC(modifySelectionInteraction)] call ace_interact_menu_fnc_createAction;
+                        private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, ace_repair_fnc_modifySelectionInteraction] call ace_interact_menu_fnc_createAction;
                         [_type, 0, [], _action] call ace_interact_menu_fnc_addActionToClass;
 
                         // An action to replace the wheel is required
@@ -373,7 +374,7 @@ private _turretPaths = ((fullCrew [_vehicle, "gunner", true]) + (fullCrew [_vehi
                         private _text = localize LSTRING(RemoveEnginepistonsmall);
                         private _condition = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveEnginepistonsmall"] call ace_repair_fnc_canRepair};
                         private _statement = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveEnginepistonsmall"] call ace_repair_fnc_repair};
-                        private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, FUNC(modifySelectionInteraction)] call ace_interact_menu_fnc_createAction;
+                        private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, ace_repair_fnc_modifySelectionInteraction] call ace_interact_menu_fnc_createAction;
                         [_type, 0, [], _action] call ace_interact_menu_fnc_addActionToClass;
 
                         // An action to replace the wheel is required
@@ -393,7 +394,7 @@ private _turretPaths = ((fullCrew [_vehicle, "gunner", true]) + (fullCrew [_vehi
                         private _text = localize LSTRING(RemoveEnginepistonmedium);
                         private _condition = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveEnginepistonmedium"] call ace_repair_fnc_canRepair};
                         private _statement = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveEnginepistonmedium"] call ace_repair_fnc_repair};
-                        private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, FUNC(modifySelectionInteraction)] call ace_interact_menu_fnc_createAction;
+                        private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, ace_repair_fnc_modifySelectionInteraction] call ace_interact_menu_fnc_createAction;
                         [_type, 0, [], _action] call ace_interact_menu_fnc_addActionToClass;
 
                         // An action to replace the wheel is required
@@ -413,7 +414,7 @@ private _turretPaths = ((fullCrew [_vehicle, "gunner", true]) + (fullCrew [_vehi
                         private _text = localize LSTRING(RemoveEnginepistonlarge);
                         private _condition = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveEnginepistonlarge"] call ace_repair_fnc_canRepair};
                         private _statement = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveEnginepistonlarge"] call ace_repair_fnc_repair};
-                        private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, FUNC(modifySelectionInteraction)] call ace_interact_menu_fnc_createAction;
+                        private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, ace_repair_fnc_modifySelectionInteraction] call ace_interact_menu_fnc_createAction;
                         [_type, 0, [], _action] call ace_interact_menu_fnc_addActionToClass;
 
                         // An action to replace the wheel is required
@@ -434,7 +435,7 @@ private _turretPaths = ((fullCrew [_vehicle, "gunner", true]) + (fullCrew [_vehi
                         private _text = localize LSTRING(RemoveEngineturbinesmall);
                         private _condition = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveEngineturbinesmall"] call ace_repair_fnc_canRepair};
                         private _statement = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveEngineturbinesmall"] call ace_repair_fnc_repair};
-                        private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, FUNC(modifySelectionInteraction)] call ace_interact_menu_fnc_createAction;
+                        private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, ace_repair_fnc_modifySelectionInteraction] call ace_interact_menu_fnc_createAction;
                         [_type, 0, [], _action] call ace_interact_menu_fnc_addActionToClass;
 
                         // An action to replace the wheel is required
@@ -455,7 +456,7 @@ private _turretPaths = ((fullCrew [_vehicle, "gunner", true]) + (fullCrew [_vehi
                         private _text = localize LSTRING(RemoveEngineturbinelarge);
                         private _condition = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveEngineturbinelarge"] call ace_repair_fnc_canRepair};
                         private _statement = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveEngineturbinelarge"] call ace_repair_fnc_repair};
-                        private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, FUNC(modifySelectionInteraction)] call ace_interact_menu_fnc_createAction;
+                        private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, ace_repair_fnc_modifySelectionInteraction] call ace_interact_menu_fnc_createAction;
                         [_type, 0, [], _action] call ace_interact_menu_fnc_addActionToClass;
 
                         // An action to replace the wheel is required
@@ -487,7 +488,7 @@ private _turretPaths = ((fullCrew [_vehicle, "gunner", true]) + (fullCrew [_vehi
                 _text = localize LSTRING(RemoveAvionics);
                 private _condition = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveAvionics"] call ace_repair_fnc_canRepair};
                 private _statement = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveAvionics"] call ace_repair_fnc_repair};
-                private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, FUNC(modifySelectionInteraction)] call ace_interact_menu_fnc_createAction;
+                private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, ace_repair_fnc_modifySelectionInteraction] call ace_interact_menu_fnc_createAction;
                 [_type, 0, [], _action] call ace_interact_menu_fnc_addActionToClass;
 
                 // An action to replace the wheel is required
@@ -519,7 +520,7 @@ private _turretPaths = ((fullCrew [_vehicle, "gunner", true]) + (fullCrew [_vehi
                         private _text = localize LSTRING(RemoveEnginepistonmedium);
                         private _condition = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveEnginepistonmedium"] call ace_repair_fnc_canRepair};
                         private _statement = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveEnginepistonmedium"] call ace_repair_fnc_repair};
-                        private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, FUNC(modifySelectionInteraction)] call ace_interact_menu_fnc_createAction;
+                        private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, ace_repair_fnc_modifySelectionInteraction] call ace_interact_menu_fnc_createAction;
                         [_type, 0, [], _action] call ace_interact_menu_fnc_addActionToClass;
 
                         // An action to replace the wheel is required
@@ -539,7 +540,7 @@ private _turretPaths = ((fullCrew [_vehicle, "gunner", true]) + (fullCrew [_vehi
                         private _text = localize LSTRING(RemoveEnginepistonsmall);
                         private _condition = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveEnginepistonsmall"] call ace_repair_fnc_canRepair};
                         private _statement = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveEnginepistonsmall"] call ace_repair_fnc_repair};
-                        private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, FUNC(modifySelectionInteraction)] call ace_interact_menu_fnc_createAction;
+                        private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, ace_repair_fnc_modifySelectionInteraction] call ace_interact_menu_fnc_createAction;
                         [_type, 0, [], _action] call ace_interact_menu_fnc_addActionToClass;
 
                         // An action to replace the wheel is required
@@ -559,7 +560,7 @@ private _turretPaths = ((fullCrew [_vehicle, "gunner", true]) + (fullCrew [_vehi
                         private _text = localize LSTRING(RemoveEnginepistonmedium);
                         private _condition = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveEnginepistonmedium"] call ace_repair_fnc_canRepair};
                         private _statement = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveEnginepistonmedium"] call ace_repair_fnc_repair};
-                        private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, FUNC(modifySelectionInteraction)] call ace_interact_menu_fnc_createAction;
+                        private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, ace_repair_fnc_modifySelectionInteraction] call ace_interact_menu_fnc_createAction;
                         [_type, 0, [], _action] call ace_interact_menu_fnc_addActionToClass;
 
                         // An action to replace the wheel is required
@@ -579,7 +580,7 @@ private _turretPaths = ((fullCrew [_vehicle, "gunner", true]) + (fullCrew [_vehi
                         private _text = localize LSTRING(RemoveEnginepistonlarge);
                         private _condition = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveEnginepistonlarge"] call ace_repair_fnc_canRepair};
                         private _statement = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveEnginepistonlarge"] call ace_repair_fnc_repair};
-                        private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, FUNC(modifySelectionInteraction)] call ace_interact_menu_fnc_createAction;
+                        private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, ace_repair_fnc_modifySelectionInteraction] call ace_interact_menu_fnc_createAction;
                         [_type, 0, [], _action] call ace_interact_menu_fnc_addActionToClass;
 
                         // An action to replace the wheel is required
@@ -600,7 +601,7 @@ private _turretPaths = ((fullCrew [_vehicle, "gunner", true]) + (fullCrew [_vehi
                         private _text = localize LSTRING(RemoveEngineturbinesmall);
                         private _condition = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveEngineturbinesmall"] call ace_repair_fnc_canRepair};
                         private _statement = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveEngineturbinesmall"] call ace_repair_fnc_repair};
-                        private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, FUNC(modifySelectionInteraction)] call ace_interact_menu_fnc_createAction;
+                        private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, ace_repair_fnc_modifySelectionInteraction] call ace_interact_menu_fnc_createAction;
                         [_type, 0, [], _action] call ace_interact_menu_fnc_addActionToClass;
 
                         // An action to replace the wheel is required
@@ -621,7 +622,7 @@ private _turretPaths = ((fullCrew [_vehicle, "gunner", true]) + (fullCrew [_vehi
                         private _text = localize LSTRING(RemoveEngineturbinelarge);
                         private _condition = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveEngineturbinelarge"] call ace_repair_fnc_canRepair};
                         private _statement = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveEngineturbinelarge"] call ace_repair_fnc_repair};
-                        private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, FUNC(modifySelectionInteraction)] call ace_interact_menu_fnc_createAction;
+                        private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, ace_repair_fnc_modifySelectionInteraction] call ace_interact_menu_fnc_createAction;
                         [_type, 0, [], _action] call ace_interact_menu_fnc_addActionToClass;
 
                         // An action to replace the wheel is required
@@ -651,7 +652,7 @@ private _turretPaths = ((fullCrew [_vehicle, "gunner", true]) + (fullCrew [_vehi
                 private _text = localize LSTRING(RemoveControlsurfaces);
                 private _condition = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveControlsurfaces"] call ace_repair_fnc_canRepair};
                 private _statement = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveControlsurfaces"] call ace_repair_fnc_repair};
-                private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, FUNC(modifySelectionInteraction)] call ace_interact_menu_fnc_createAction;
+                private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, ace_repair_fnc_modifySelectionInteraction] call ace_interact_menu_fnc_createAction;
                 [_type, 0, [], _action] call ace_interact_menu_fnc_addActionToClass;
 
                 // An action to replace the wheel is required
@@ -684,7 +685,7 @@ private _turretPaths = ((fullCrew [_vehicle, "gunner", true]) + (fullCrew [_vehi
                     private _text = localize LSTRING(RemoveEnginepistonmedium);
                     private _condition = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveEnginepistonmedium"] call ace_repair_fnc_canRepair};
                     private _statement = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveEnginepistonmedium"] call ace_repair_fnc_repair};
-                    private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, FUNC(modifySelectionInteraction)] call ace_interact_menu_fnc_createAction;
+                    private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, ace_repair_fnc_modifySelectionInteraction] call ace_interact_menu_fnc_createAction;
                     [_type, 0, [], _action] call ace_interact_menu_fnc_addActionToClass;
 
                     // An action to replace the wheel is required
@@ -704,7 +705,7 @@ private _turretPaths = ((fullCrew [_vehicle, "gunner", true]) + (fullCrew [_vehi
                     private _text = localize LSTRING(RemoveEnginepistonsmall);
                     private _condition = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveEnginepistonsmall"] call ace_repair_fnc_canRepair};
                     private _statement = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveEnginepistonsmall"] call ace_repair_fnc_repair};
-                    private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, FUNC(modifySelectionInteraction)] call ace_interact_menu_fnc_createAction;
+                    private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, ace_repair_fnc_modifySelectionInteraction] call ace_interact_menu_fnc_createAction;
                     [_type, 0, [], _action] call ace_interact_menu_fnc_addActionToClass;
 
                     // An action to replace the wheel is required
@@ -724,7 +725,7 @@ private _turretPaths = ((fullCrew [_vehicle, "gunner", true]) + (fullCrew [_vehi
                     private _text = localize LSTRING(RemoveEnginepistonmedium);
                     private _condition = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveEnginepistonmedium"] call ace_repair_fnc_canRepair};
                     private _statement = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveEnginepistonmedium"] call ace_repair_fnc_repair};
-                    private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, FUNC(modifySelectionInteraction)] call ace_interact_menu_fnc_createAction;
+                    private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, ace_repair_fnc_modifySelectionInteraction] call ace_interact_menu_fnc_createAction;
                     [_type, 0, [], _action] call ace_interact_menu_fnc_addActionToClass;
 
                     // An action to replace the wheel is required
@@ -744,7 +745,7 @@ private _turretPaths = ((fullCrew [_vehicle, "gunner", true]) + (fullCrew [_vehi
                     private _text = localize LSTRING(RemoveEnginepistonlarge);
                     private _condition = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveEnginepistonlarge"] call ace_repair_fnc_canRepair};
                     private _statement = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveEnginepistonlarge"] call ace_repair_fnc_repair};
-                    private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, FUNC(modifySelectionInteraction)] call ace_interact_menu_fnc_createAction;
+                    private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, ace_repair_fnc_modifySelectionInteraction] call ace_interact_menu_fnc_createAction;
                     [_type, 0, [], _action] call ace_interact_menu_fnc_addActionToClass;
 
                     // An action to replace the wheel is required
@@ -764,7 +765,7 @@ private _turretPaths = ((fullCrew [_vehicle, "gunner", true]) + (fullCrew [_vehi
                     private _text = localize LSTRING(RemoveEngineturbinesmall);
                     private _condition = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveEngineturbinesmall"] call ace_repair_fnc_canRepair};
                     private _statement = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveEngineturbinesmall"] call ace_repair_fnc_repair};
-                    private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, FUNC(modifySelectionInteraction)] call ace_interact_menu_fnc_createAction;
+                    private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, ace_repair_fnc_modifySelectionInteraction] call ace_interact_menu_fnc_createAction;
                     [_type, 0, [], _action] call ace_interact_menu_fnc_addActionToClass;
 
                     // An action to replace the wheel is required
@@ -785,7 +786,7 @@ private _turretPaths = ((fullCrew [_vehicle, "gunner", true]) + (fullCrew [_vehi
                     private _text = localize LSTRING(RemoveEngineturbinelarge);
                     private _condition = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveEngineturbinelarge"] call ace_repair_fnc_canRepair};
                     private _statement = {[_this select 1, _this select 0, _this select 2 select 0, "RemoveEngineturbinelarge"] call ace_repair_fnc_repair};
-                    private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, FUNC(modifySelectionInteraction)] call ace_interact_menu_fnc_createAction;
+                    private _action = [_name, _text, _icon, _statement, _condition, {}, [_hitpoint], _position, 3, nil, ace_repair_fnc_modifySelectionInteraction] call ace_interact_menu_fnc_createAction;
                     [_type, 0, [], _action] call ace_interact_menu_fnc_addActionToClass;
 
                     // An action to replace the wheel is required
