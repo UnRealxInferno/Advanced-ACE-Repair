@@ -32,7 +32,7 @@ if (_newdamage <= 0) then {
 	_newdamage = 0;
 };
 
-_vehicle setDamage _newdamage;
+[QACEVAR(repair,setVehicleDamage), [_vehicle, _newdamage], _vehicle] call CBA_fnc_targetEvent;
 
 // display text message if enabled
 if (ACEVAR(repair,DisplayTextOnRepair)) then {

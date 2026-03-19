@@ -17,10 +17,10 @@ private _engineerRequired = if (isNumber (_config >> "requiredEngineer")) then {
     };
     0;
 };
-if !([_caller, _engineerRequired] call FUNC(isEngineer)) exitWith {false};
+if !([_caller, _engineerRequired] call ace_repair_fnc_isEngineer) exitWith {false};
 
-private _items = _config call FUNC(getRepairItems);
-if (_items isNotEqualTo [] && {!([_caller, _items] call FUNC(hasItems))}) exitWith {false};
+private _items = _config call ace_repair_fnc_getRepairItems;
+if (_items isNotEqualTo [] && {!([_caller, _items] call ace_repair_fnc_hasItems)}) exitWith {false};
 
 private _return = true;
 if (getText (_config >> "condition") != "") then {
@@ -48,8 +48,8 @@ if (!_return) exitWith {false};
 
 private _repairLocations = getArray (_config >> "repairLocations");
 if !("All" in _repairLocations) then {
-    private _repairFacility = {([_caller] call FUNC(isInRepairFacility)) || ([_target] call FUNC(isInRepairFacility))};
-    private _repairVeh = {([_caller] call FUNC(isNearRepairVehicle)) || ([_target] call FUNC(isNearRepairVehicle))};
+    private _repairFacility = {([_caller] call ace_repair_fnc_isInRepairFacility) || ([_target] call ace_repair_fnc_isInRepairFacility)};
+    private _repairVeh = {([_caller] call ace_repair_fnc_isNearRepairVehicle) || ([_target] call ace_repair_fnc_isNearRepairVehicle)};
     {
         if (_x == "field") exitWith {_return = true;};
         if (_x == "RepairFacility" && _repairFacility) exitWith {_return = true;};

@@ -4,11 +4,15 @@ class ACE_Repair
 	{
 		class ReplaceWheel;
 		class RemoveWheel: ReplaceWheel
-		{/*
-			condition="ace_repair_fnc_canReplaceWheel";*/
+		{
+			condition="ace_repair_fnc_canRemove";
 			callbackSuccess="advrepair_main_fnc_doRemoveWheel";
+			claimObjects[]={};
 		};
 		class MiscRepair: ReplaceWheel {
+			condition="ace_repair_fnc_canMiscRepair";
+			callbackSuccess="ace_repair_fnc_doRepair";
+			claimObjects[]={};
 			repairingTime=10;
 		};
 		class AdvMajorRepair: MiscRepair
@@ -39,6 +43,7 @@ class ACE_Repair
 		{
 			condition="advrepair_main_fnc_canRemoveTrack";
 			callbackSuccess="advrepair_main_fnc_doRemoveTrack";
+			claimObjects[]={};
 		};
 		class ReplaceTrack: RemoveTrack
 		{
@@ -55,6 +60,7 @@ class ACE_Repair
 			};
 			condition="advrepair_main_fnc_canRemoveLocked";
 			callbackSuccess="advrepair_main_fnc_doRemoveRotorAssembly";
+			claimObjects[]={};
 			itemConsumed=0;
 		};
 		class ReplaceRotorAssembly: RemoveRotorAssembly
@@ -87,6 +93,7 @@ class ACE_Repair
 			};
 			condition="advrepair_main_fnc_canRemoveLocked";
 			callbackSuccess="advrepair_main_fnc_doRemoveAvionics";
+			claimObjects[]={};
 			itemConsumed=0;
 		};
 		class ReplaceAvionics: RemoveAvionics
@@ -120,6 +127,7 @@ class ACE_Repair
 			};
 			condition="advrepair_main_fnc_canRemoveLocked";
 			callbackSuccess="advrepair_main_fnc_doRemoveEnginepistonsmall";
+			claimObjects[]={};
 			itemConsumed=0;
 		};
 		class ReplaceEnginepistonsmall: RemoveEnginepistonsmall
@@ -152,6 +160,7 @@ class ACE_Repair
 			};
 			condition="advrepair_main_fnc_canRemoveLocked";
 			callbackSuccess="advrepair_main_fnc_doRemoveEnginepistonmedium";
+			claimObjects[]={};
 			itemConsumed=0;
 		};
 		class ReplaceEnginepistonmedium: RemoveEnginepistonmedium
@@ -184,6 +193,7 @@ class ACE_Repair
 			};
 			condition="advrepair_main_fnc_canRemoveLocked";
 			callbackSuccess="advrepair_main_fnc_doRemoveEnginepistonlarge";
+			claimObjects[]={};
 			itemConsumed=0;
 		};
 		class ReplaceEnginepistonlarge: RemoveEnginepistonlarge
@@ -216,6 +226,7 @@ class ACE_Repair
 			};
 			condition="advrepair_main_fnc_canRemoveLocked";
 			callbackSuccess="advrepair_main_fnc_doRemoveEngineturbinesmall";
+			claimObjects[]={};
 			itemConsumed=0;
 		};
 		class ReplaceEngineturbinesmall: RemoveEngineturbinesmall
@@ -248,6 +259,7 @@ class ACE_Repair
 			};
 			condition="advrepair_main_fnc_canRemoveLocked";
 			callbackSuccess="advrepair_main_fnc_doRemoveEngineturbinelarge";
+			claimObjects[]={};
 			itemConsumed=0;
 		};
 		class ReplaceEngineturbinelarge: RemoveEngineturbinelarge
@@ -281,6 +293,7 @@ class ACE_Repair
 			};
 			condition="advrepair_main_fnc_canRemoveLocked";
 			callbackSuccess="advrepair_main_fnc_doRemoveFueltanksmall";
+			claimObjects[]={};
 			itemConsumed=0;
 		};
 		class ReplaceFueltanksmall: RemoveFueltanksmall
@@ -313,6 +326,7 @@ class ACE_Repair
 			};
 			condition="advrepair_main_fnc_canRemoveLocked";
 			callbackSuccess="advrepair_main_fnc_doRemoveFueltanklarge";
+			claimObjects[]={};
 			itemConsumed=0;
 		};
 		class ReplaceFueltanklarge: RemoveFueltanklarge
@@ -345,6 +359,7 @@ class ACE_Repair
 			};
 			condition="advrepair_main_fnc_canRemoveLocked";
 			callbackSuccess="advrepair_main_fnc_doRemoveControlsurfaces";
+			claimObjects[]={};
 			itemConsumed=0;
 		};
 		class ReplaceControlsurfaces: RemoveControlsurfaces
@@ -377,6 +392,7 @@ class ACE_Repair
 			};
 			condition="advrepair_main_fnc_canRemoveLocked";
 			callbackSuccess="advrepair_main_fnc_doRemoveGunFCS";
+			claimObjects[]={};
 			itemConsumed=0;
 		};
 		class ReplaceGunFCS: RemoveGunFCS
@@ -409,6 +425,7 @@ class ACE_Repair
 			};
 			condition="advrepair_main_fnc_canRemoveLocked";
 			callbackSuccess="advrepair_main_fnc_doRemoveTurretdrive";
+			claimObjects[]={};
 			itemConsumed=0;
 		};
 		class ReplaceTurretdrive: RemoveTurretdrive

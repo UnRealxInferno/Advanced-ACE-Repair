@@ -15,7 +15,7 @@ private _engineerRequired = if (isNumber (_config >> "requiredEngineer")) then {
     };
     0;
 };
-if !([_caller, _engineerRequired] call FUNC(isEngineer)) exitWith {false};
+if !([_caller, _engineerRequired] call ace_repair_fnc_isEngineer) exitWith {false};
 
 if ((isEngineOn _target) && {ACEVAR(repair,autoShutOffEngineWhenStartingRepair)}) then {
     [QACEVAR(common,engineOn), [_target, false], _target] call CBA_fnc_targetEvent;
@@ -25,8 +25,8 @@ if ((isEngineOn _target) && {!ACEVAR(repair,autoShutOffEngineWhenStartingRepair)
     false
 };
 
-private _items = _config call FUNC(getRepairItems);
-if (_items isNotEqualTo [] && {!([_caller, _items] call FUNC(hasItems))}) exitWith {false};
+private _items = _config call ace_repair_fnc_getRepairItems;
+if (_items isNotEqualTo [] && {!([_caller, _items] call ace_repair_fnc_hasItems)}) exitWith {false};
 
 private _return = true;
 if (getText (_config >> "condition") != "") then {
@@ -53,8 +53,8 @@ if (!_return) exitWith {false};
 
 private _repairLocations = getArray (_config >> "repairLocations");
 if !("All" in _repairLocations) then {
-    private _repairFacility = {([_caller] call FUNC(isInRepairFacility)) || ([_target] call FUNC(isInRepairFacility))};
-    private _repairVeh = {([_caller] call FUNC(isNearRepairVehicle)) || ([_target] call FUNC(isNearRepairVehicle))};
+    private _repairFacility = {([_caller] call ace_repair_fnc_isInRepairFacility) || ([_target] call ace_repair_fnc_isInRepairFacility)};
+    private _repairVeh = {([_caller] call ace_repair_fnc_isNearRepairVehicle) || ([_target] call ace_repair_fnc_isNearRepairVehicle)};
     {
         if (_x == "field") exitWith {_return = true;};
         if (_x == "RepairFacility" && _repairFacility) exitWith {_return = true;};
@@ -77,7 +77,7 @@ if !("All" in _repairLocations) then {
 private _requiredObjects = getArray (_config >> "claimObjects");
 private _claimObjectsAvailable = [];
 if (_requiredObjects isNotEqualTo []) then {
-    _claimObjectsAvailable = [_caller, 5, _requiredObjects, true] call FUNC(getClaimObjects);
+    _claimObjectsAvailable = [_caller, 5, _requiredObjects, true] call ace_repair_fnc_getClaimObjects;
     if (_claimObjectsAvailable isEqualTo []) then {
         TRACE_2("Missing Required Objects",_requiredObjects,_claimObjectsAvailable);
         _return = false
@@ -105,7 +105,7 @@ private _consumeItems = if (isNumber (_config >> "itemConsumed")) then {
 
 private _usersOfItems = [];
 if (_consumeItems > 0) then {
-    _usersOfItems = ([_caller, _items] call FUNC(useItems)) select 1;
+    _usersOfItems = ([_caller, _items] call ace_repair_fnc_useItems) select 1;
 };
 
 // Parse the config for the progress callback
@@ -220,7 +220,7 @@ private _processText = getText (_config >> "displayNameProgress");
 private _backupText = format [localize ACESTRING(RepairingHitPoint), _hitPointClassname];
 private _text = _processText;
 if (getNumber (_config >> "forceDisplayName") isNotEqualTo 1) then {
-    _text = ([_hitPointClassname, _processText, _backupText] call FUNC(getHitPointString)) select 0;
+    _text = ([_hitPointClassname, _processText, _backupText] call ace_repair_fnc_getHitPointString) select 0;
 };
 
 TRACE_4("display",_hitPoint,_hitPointClassname,_processText,_text);
@@ -229,8 +229,8 @@ TRACE_4("display",_hitPoint,_hitPointClassname,_processText,_text);
 [
     _repairTime,
     [_caller, _target, _hitPoint, _className, _items, _usersOfItems, _claimObjectsAvailable],
-    DFUNC(repair_success),
-    DFUNC(repair_failure),
+    ace_repair_fnc_repair_success,
+    ace_repair_fnc_repair_failure,
     _text,
     _callbackProgress,
     ["isNotSwimming", "isNotOnLadder"]
