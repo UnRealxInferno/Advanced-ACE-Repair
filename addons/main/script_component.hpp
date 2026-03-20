@@ -16,7 +16,7 @@
 
 #define TURRET_HITPOINTS ["hitturret", "hitcomturret"]
 
-#define ALL_HITPOINTS ["hitavionics,"hitltrack", "hitrtrack","hitvrotor", "hithrotor","hitfuel", "hitfuel2", "hitfuelr", "hitfuell","hitlaileron", "hitraileron", "hitlcrudder", "hitrrudder", "hitlcelevator", "hitrelevator","hitgun", "hitcomgun","hitturret", "hitcomturret"]
+#define ALL_HITPOINTS ["hitavionics", "hitltrack", "hitrtrack", "hitvrotor", "hithrotor", "hitfuel", "hitfuel2", "hitfuelr", "hitfuell", "hitlaileron", "hitraileron", "hitlcrudder", "hitrrudder", "hitlcelevator", "hitrelevator", "hitgun", "hitcomgun", "hitturret", "hitcomturret"]
 
 #define DAMAGE_COLOR_SCALE ["#FFFFFF", "#FFFF7E", "#FFEC4D", "#FFD52C", "#FCB121", "#FF9916", "#FF7D16", "#FF4400", "#FF0000"]
 
