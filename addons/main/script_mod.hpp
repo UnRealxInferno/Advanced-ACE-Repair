@@ -1,4 +1,4 @@
-#define MAINPREFIX fl
+#define MAINPREFIX z
 #define PREFIX advrepair
 
 #include "script_version.hpp"

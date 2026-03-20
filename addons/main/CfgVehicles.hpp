@@ -47,7 +47,7 @@ class CfgVehicles {
         minTotalDamageThreshold=0.0099999998;
         explosionShielding=1;
         hiddenSelections[] = {"Camo","Camo2"};
-        hiddenSelectionsTextures[] = {"a3\Props_F_Orange\Humanitarian\Supplies\Data\PlasticCase_01_gray_CO.paa","fl\advrepair\addons\main\data\part_SpareParts.paa"};
+        hiddenSelectionsTextures[] = {"a3\Props_F_Orange\Humanitarian\Supplies\Data\PlasticCase_01_gray_CO.paa","z\advrepair\addons\main\data\part_SpareParts.paa"};
         maximumLoad = 300;
         transportMaxBackpacks = 12;
         transportMaxMagazines = 64;
@@ -145,7 +145,7 @@ class CfgVehicles {
         minTotalDamageThreshold=0.0099999998;
         explosionShielding=1;
         hiddenSelections[] = {"Camo","Camo2"};
-        hiddenSelectionsTextures[] = {"a3\Props_F_Enoch\Military\Supplies\Data\PlasticCase_01_black_CO.paa","fl\advrepair\addons\main\data\part_gunfcs.paa"};
+        hiddenSelectionsTextures[] = {"a3\Props_F_Enoch\Military\Supplies\Data\PlasticCase_01_black_CO.paa","z\advrepair\addons\main\data\part_gunfcs.paa"};
         class HitPoints {
             class HitBody {
                 armor=1;
@@ -184,7 +184,7 @@ class CfgVehicles {
         minTotalDamageThreshold=0.0099999998;
         explosionShielding=1;
         hiddenSelections[] = {"Camo","Camo2"};
-        hiddenSelectionsTextures[] = {"a3\Props_F_Enoch\Military\Supplies\Data\PlasticCase_01_black_CO.paa","fl\advrepair\addons\main\data\part_engineturbinesmall.paa"};
+        hiddenSelectionsTextures[] = {"a3\Props_F_Enoch\Military\Supplies\Data\PlasticCase_01_black_CO.paa","z\advrepair\addons\main\data\part_engineturbinesmall.paa"};
         class HitPoints {
             class HitBody {
                 armor=1;
@@ -223,7 +223,7 @@ class CfgVehicles {
         minTotalDamageThreshold=0.0099999998;
         explosionShielding=1;
         hiddenSelections[] = {"Camo","Camo2"};
-        hiddenSelectionsTextures[] = {"a3\Props_F_Enoch\Military\Supplies\Data\PlasticCase_01_black_CO.paa","fl\advrepair\addons\main\data\part_engineturbinelarge.paa"};
+        hiddenSelectionsTextures[] = {"a3\Props_F_Enoch\Military\Supplies\Data\PlasticCase_01_black_CO.paa","z\advrepair\addons\main\data\part_engineturbinelarge.paa"};
         class HitPoints {
             class HitBody {
                 armor=1;
@@ -262,7 +262,7 @@ class CfgVehicles {
         minTotalDamageThreshold=0.0099999998;
         explosionShielding=1;
         hiddenSelections[] = {"Camo","Camo2"};
-        hiddenSelectionsTextures[] = {"a3\Props_F_Orange\Humanitarian\Supplies\Data\PlasticCase_01_gray_CO.paa","fl\advrepair\addons\main\data\part_rotorassembly.paa"};
+        hiddenSelectionsTextures[] = {"a3\Props_F_Orange\Humanitarian\Supplies\Data\PlasticCase_01_gray_CO.paa","z\advrepair\addons\main\data\part_rotorassembly.paa"};
         class HitPoints {
             class HitBody {
                 armor=1;
@@ -301,7 +301,7 @@ class CfgVehicles {
         minTotalDamageThreshold=0.0099999998;
         explosionShielding=1;
         hiddenSelections[] = {"Camo","Camo2"};
-        hiddenSelectionsTextures[] = {"a3\Props_F_Orange\Humanitarian\Supplies\Data\PlasticCase_01_gray_CO.paa","fl\advrepair\addons\main\data\part_controlsurfaces.paa"};
+        hiddenSelectionsTextures[] = {"a3\Props_F_Orange\Humanitarian\Supplies\Data\PlasticCase_01_gray_CO.paa","z\advrepair\addons\main\data\part_controlsurfaces.paa"};
         class HitPoints {
             class HitBody {
                 armor=1;
@@ -340,7 +340,7 @@ class CfgVehicles {
         minTotalDamageThreshold=0.0099999998;
         explosionShielding=1;
         hiddenSelections[] = {"Camo","Camo2"};
-        hiddenSelectionsTextures[] = {"a3\Props_F_Orange\Humanitarian\Supplies\Data\PlasticCase_01_gray_CO.paa","fl\advrepair\addons\main\data\part_avionics.paa"};
+        hiddenSelectionsTextures[] = {"a3\Props_F_Orange\Humanitarian\Supplies\Data\PlasticCase_01_gray_CO.paa","z\advrepair\addons\main\data\part_avionics.paa"};
         class HitPoints {
             class HitBody {
                 armor=1;
@@ -379,7 +379,7 @@ class CfgVehicles {
         minTotalDamageThreshold=0.0099999998;
         explosionShielding=1;
         hiddenSelections[] = {"Camo","Camo2"};
-        hiddenSelectionsTextures[] = {"a3\Props_F_Enoch\Military\Supplies\Data\PlasticCase_01_olive_CO.paa","fl\advrepair\addons\main\data\part_enginepistonlarge.paa"};
+        hiddenSelectionsTextures[] = {"a3\Props_F_Enoch\Military\Supplies\Data\PlasticCase_01_olive_CO.paa","z\advrepair\addons\main\data\part_enginepistonlarge.paa"};
         class HitPoints {
             class HitBody {
                 armor=1;
@@ -417,7 +417,7 @@ class CfgVehicles {
         minTotalDamageThreshold=0.0099999998;
         explosionShielding=1;
         hiddenSelections[] = {"Camo","Camo2"};
-        hiddenSelectionsTextures[] = {"a3\Props_F_Enoch\Military\Supplies\Data\PlasticCase_01_olive_CO.paa","fl\advrepair\addons\main\data\part_enginepistonmedium.paa"};
+        hiddenSelectionsTextures[] = {"a3\Props_F_Enoch\Military\Supplies\Data\PlasticCase_01_olive_CO.paa","z\advrepair\addons\main\data\part_enginepistonmedium.paa"};
         class HitPoints {
             class HitBody {
                 armor=1;
@@ -456,7 +456,7 @@ class CfgVehicles {
         minTotalDamageThreshold=0.0099999998;
         explosionShielding=1;
         hiddenSelections[] = {"Camo","Camo2"};
-        hiddenSelectionsTextures[] = {"a3\Props_F_Enoch\Military\Supplies\Data\PlasticCase_01_olive_CO.paa","fl\advrepair\addons\main\data\part_enginepistonsmall.paa"};
+        hiddenSelectionsTextures[] = {"a3\Props_F_Enoch\Military\Supplies\Data\PlasticCase_01_olive_CO.paa","z\advrepair\addons\main\data\part_enginepistonsmall.paa"};
         class HitPoints {
             class HitBody {
                 armor=1;
@@ -495,7 +495,7 @@ class CfgVehicles {
         minTotalDamageThreshold=0.0099999998;
         explosionShielding=1;
         hiddenSelections[] = {"Camo","Camo2"};
-        hiddenselectionsTextures[] = {"a3\structures_f_heli\items\luggage\data\plasticcase_01_co.paa","fl\advrepair\addons\main\data\part_turretdrive.paa"};
+        hiddenselectionsTextures[] = {"a3\structures_f_heli\items\luggage\data\plasticcase_01_co.paa","z\advrepair\addons\main\data\part_turretdrive.paa"};
         class HitPoints {
             class HitBody {
                 armor=1;
@@ -534,7 +534,7 @@ class CfgVehicles {
         minTotalDamageThreshold=0.0099999998;
         explosionShielding=1;
         hiddenSelections[] = {"Camo","Camo2"};
-        hiddenselectionsTextures[] = {"a3\structures_f_heli\items\luggage\data\plasticcase_01_co.paa","fl\advrepair\addons\main\data\part_fueltanksmall.paa"};
+        hiddenselectionsTextures[] = {"a3\structures_f_heli\items\luggage\data\plasticcase_01_co.paa","z\advrepair\addons\main\data\part_fueltanksmall.paa"};
         class HitPoints {
             class HitBody {
                 armor=1;
@@ -573,7 +573,7 @@ class CfgVehicles {
         minTotalDamageThreshold=0.0099999998;
         explosionShielding=1;
         hiddenSelections[] = {"Camo","Camo2"};
-        hiddenselectionsTextures[] = {"a3\structures_f_heli\items\luggage\data\plasticcase_01_co.paa","fl\advrepair\addons\main\data\part_fueltanklarge.paa"};
+        hiddenselectionsTextures[] = {"a3\structures_f_heli\items\luggage\data\plasticcase_01_co.paa","z\advrepair\addons\main\data\part_fueltanklarge.paa"};
         class HitPoints {
             class HitBody {
                 armor=1;
