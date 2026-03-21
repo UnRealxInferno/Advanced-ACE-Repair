@@ -1,9 +1,0 @@
-name = "Advanced ACE Repair"
-prefix = "advrepair"
-mainprefix = "z"
-
-[hemtt.launch.default]
-workshop = [
-    "450814997", # CBA
-    "463939057", # ACE3
-]
